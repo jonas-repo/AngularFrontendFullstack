@@ -12,4 +12,8 @@ import {CommonModule} from '@angular/common';
 export class App {
   protected title = 'Hello world angular from component!';
   users = ['Peter','Mary','Jhon','Andrei'];
+  visible: boolean = false;
+  setVisible(): void {
+    this.visible = this.visible? false : true;
+  }
 }

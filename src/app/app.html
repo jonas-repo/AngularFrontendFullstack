@@ -1,14 +1,30 @@
-<h2>{{title}}</h2>
+<div *ngIf="visible else notEnabled">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-    </tr>   
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{user}}</td>
-    </tr>
-  </tbody>
-</table>
+  <h2>{{title}}</h2>
+
+  <table *ngIf="(users != undefined && users.length > 0) else isEmpty">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; index as i">
+        <td>{{i+1}}</td>
+        <td>{{user}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #isEmpty>
+    <div>
+      Register doesn't exist
+    </div>
+  </ng-template>
+</div>
+<ng-template #notEnabled>
+  <h2>Sorry page not available</h2>
+</ng-template>
+<button (click)="setVisible()">
+  {{visible ? 'Hide':'Show'}}
+</button>
