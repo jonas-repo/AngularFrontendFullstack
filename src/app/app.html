@@ -1,4 +1,42 @@
-<div *ngIf="visible else notEnabled">
+<button (click)="setVisible()">
+  {{visible ? 'Hide':'Show'}}
+</button>
+
+@if (visible) {
+  <h2>{{title}}</h2>
+  @if (users != undefined && users.length > 0) {
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users; track $index) {
+         <tr>
+          <td>{{$index+1}}</td>
+          <td>{{user}}</td>
+        </tr>
+      }    
+    </tbody>
+  </table>
+  }
+  @else {
+    <p>
+      Register doesn't exist
+    </p>
+  }
+
+
+}
+@else {
+  <h2>Sorry page not available</h2>
+}
+
+
+
+<!-- <div *ngIf="visible else notEnabled">
 
   <h2>{{title}}</h2>
 
@@ -24,7 +62,4 @@
 </div>
 <ng-template #notEnabled>
   <h2>Sorry page not available</h2>
-</ng-template>
-<button (click)="setVisible()">
-  {{visible ? 'Hide':'Show'}}
-</button>
+</ng-template> -->
