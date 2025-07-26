@@ -12,6 +12,7 @@ import { Counter } from './counter/counter';
 })
 export class App {
   protected title = 'Hello world angular from component!';
+  subtitle = 'State session counter'
   users = ['Peter','Mary','Jhon','Andrei'];
   visible: boolean = false;
   setVisible(): void {
